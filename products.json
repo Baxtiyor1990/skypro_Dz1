@@ -1,38 +1,38 @@
 {
   "categories": [
     {
-      "name": "Electronics",
-      "description": "Electronics category description",
+      "name": "TestCategory1",
+      "description": "Test Electronics category description",
       "products": [
         {
-          "name": "Laptop",
-          "description": "Powerful laptop",
-          "price": 1200.50,
-          "quantity_in_stock": 10
+          "name": "TestProduct1",
+          "description": "Test Laptop",
+          "price": 500.0,
+          "quantity_in_stock": 5
         },
         {
-          "name": "Smartphone",
-          "description": "High-end smartphone",
-          "price": 899.99,
-          "quantity_in_stock": 20
+          "name": "TestProduct2",
+          "description": "Test Smartphone",
+          "price": 300.0,
+          "quantity_in_stock": 15
         }
       ]
     },
     {
-      "name": "Clothing",
-      "description": "Clothing category description",
+      "name": "TestCategory2",
+      "description": "Test Clothing category description",
       "products": [
         {
-          "name": "T-shirt",
-          "description": "Cotton T-shirt",
-          "price": 19.99,
-          "quantity_in_stock": 50
+          "name": "TestProduct3",
+          "description": "Test T-shirt",
+          "price": 10.0,
+          "quantity_in_stock": 20
         },
         {
-          "name": "Jeans",
-          "description": "Blue jeans",
-          "price": 39.99,
-          "quantity_in_stock": 30
+          "name": "TestProduct4",
+          "description": "Test Jeans",
+          "price": 25.0,
+          "quantity_in_stock": 10
         }
       ]
     }

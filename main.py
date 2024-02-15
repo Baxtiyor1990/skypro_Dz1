@@ -1,5 +1,6 @@
 import json
 
+
 class Category:
     total_categories = 0
     total_products = 0
@@ -7,19 +8,46 @@ class Category:
     def __init__(self, name, description):
         self.name = name
         self.description = description
-        self.products = []
+        self.__products = []
         Category.total_categories += 1
 
     def add_product(self, product):
-        self.products.append(product)
+        """Метод для добавления товара в категорию"""
+        self.__products.append(product)
         Category.total_products += 1
+
+    def get_products_info(self):
+        """Геттер для вывода списка товаров"""
+        products_info = []
+        for product in self.__products:
+            products_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_in_stock} шт.")
+        return products_info
+
 
 class Product:
     def __init__(self, name, description, price, quantity_in_stock):
         self.name = name
         self.description = description
+        self.__price = None
         self.price = price
         self.quantity_in_stock = quantity_in_stock
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, value):
+        if value > 0:
+            self.__price = value
+        else:
+            print("Цена введена некорректно.")
+
+    @price.deleter
+    def price(self):
+        print("Цена удалена.")
+        del self.__price
+
 
 def load_data_from_json(file_path):
     with open(file_path, 'r') as file:
@@ -40,17 +68,17 @@ def load_data_from_json(file_path):
 
     return categories
 
-# Загружаем данные из файла JSON
-json_file_path = 'products.json'
-loaded_categories = load_data_from_json(json_file_path)
 
-# Вывод информации о категориях и их продуктах
-for category in loaded_categories:
-    print(f"\nCategory: {category.name}")
-    print(f"Description: {category.description}")
-    print("Products:")
-    for product in category.products:
-        print(f"\tProduct: {product.name}")
-        print(f"\tDescription: {product.description}")
-        print(f"\tPrice: ${product.price}")
-        print(f"\tQuantity in stock: {product.quantity_in_stock}\n")
+if __name__ == "__main__":
+    # Загружаем данные из файла JSON
+    json_file_path = 'products.json'
+    loaded_categories = load_data_from_json(json_file_path)
+
+    # Вывод информации о категориях и их продуктах
+    for category in loaded_categories:
+        print(f"\nCategory: {category.name}")
+        print(f"Description: {category.description}")
+        print("Products:")
+        for product_info in category.get_products_info():
+            print(f"\t{product_info}")
+

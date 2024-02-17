@@ -1,2 +1,22 @@
-venv/
+# .gitignore
+
+# Python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+
+# IDE (PyCharm, VSCode, etc.)
+.idea/
+
+# Compiled Python files
+*.pyc
+
+# Compiled C extensions
+*.so
+
+# Miscellaneous
+*.DS_Store

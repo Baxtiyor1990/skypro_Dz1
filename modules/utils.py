@@ -20,4 +20,3 @@ def load_data_from_json(file_path):
         categories.append(category)
 
     return categories
-

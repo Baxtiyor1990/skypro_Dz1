@@ -22,3 +22,10 @@ class Category:
                 f"{product.name}, {product.price} руб. Остаток: {product.quantity_in_stock} шт."
             )
         return products_info
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
+
+    def __len__(self):
+        return sum(product.quantity_in_stock for product in self.__products)
+

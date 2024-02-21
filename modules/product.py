@@ -30,9 +30,9 @@ class Product:
 
     def __add__(self, other):
         if isinstance(other, Product):
-            total_price = (self.price * self.quantity_in_stock) + (other.price * other.quantity_in_stock)
-            total_quantity = self.quantity_in_stock + other.quantity_in_stock
-            return total_price / total_quantity
+            total_price_self = self.price * self.quantity_in_stock
+            total_price_other = other.price * other.quantity_in_stock
+            return int(total_price_self + total_price_other)
         else:
-            raise TypeError("Unsupported operand type. You can only add two Product instances.")
+            raise TypeError("Unsupported operand type. Product can only be added to another Product.")
 

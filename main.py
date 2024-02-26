@@ -1,5 +1,7 @@
 from modules.category import Category
 from modules.product import Product
+from modules.smartphone import Smartphone
+from modules.grass import Grass
 from modules.utils import load_data_from_json
 
 # Загружаем данные из файла JSON

@@ -29,10 +29,11 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity_in_stock} шт."
 
     def __add__(self, other):
-        if isinstance(other, Product):
+        if type(self) == type(other):
             total_price_self = self.price * self.quantity_in_stock
             total_price_other = other.price * other.quantity_in_stock
             return int(total_price_self + total_price_other)
         else:
-            raise TypeError("Unsupported operand type. Product can only be added to another Product.")
+            raise TypeError("Unsupported operand type. Products must be of the same type.")
+
 

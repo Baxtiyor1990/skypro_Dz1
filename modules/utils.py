@@ -1,23 +1,16 @@
 import json
-from .category import Category
-from .product import Product
 
 def load_data_from_json(file_path):
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
+    return data
 
-    categories = []
-    for category_data in data['categories']:
-        category = Category(category_data['name'], category_data['description'])
-        for product_data in category_data['products']:
-            product = Product.create_product(
-                product_data['name'],
-                product_data['description'],
-                product_data['price'],
-                product_data['quantity_in_stock']
-            )
-            category.add_product(product)
-        categories.append(category)
+class LogMixin:
+    def __init__(self):
+        self.log_messages = []
 
-    return categories
+    def log(self, message):
+        self.log_messages.append(message)
 
+    def __str__(self):
+        return f"Лог: {', '.join(self.log_messages)}" if self.log_messages else "Лог: (пусто)"

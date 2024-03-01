@@ -1,35 +1,32 @@
+from .utils import LogMixin
 
-from .product import Product
-class Category:
+class Category(LogMixin):
     total_categories = 0
     total_products = 0
 
-    def __init__(self, name, description, products=None):
+    def __init__(self, name, description):
+        super().__init__()
         self.name = name
         self.description = description
-        self.__products = products or []
+        self.products_info = []
         Category.total_categories += 1
 
     def add_product(self, product):
-        if isinstance(product, Product):
-            self.__products.append(product)
-            Category.total_products += 1
-        else:
-            raise TypeError("Only instances of Product or its subclasses can be added to a category.")
-
-    @property
-    def products_info(self):
-        """Геттер для вывода списка товаров"""
-        products_info = []
-        for product in self.__products:
-            products_info.append(
-                f"{product.name}, {product.price} руб. Остаток: {product.quantity_in_stock} шт."
-            )
-        return products_info
+        self.log(f"Добавление продукта {product.name} в категорию.")
+        self.products_info.append(product)
+        Category.total_products += 1
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
+        return f"{self.name}, {self.description}, Лог: {', '.join(self.log_messages)}"
 
-    def __len__(self):
-        return sum(product.quantity_in_stock for product in self.__products)
+class Order(LogMixin):
+    def __init__(self):
+        super().__init__()
+        self.products_info = []
 
+    def add_product(self, product):
+        self.log(f"Добавление продукта {product.name} в заказ.")
+        self.products_info.append(product)
+
+    def __str__(self):
+        return f"Заказ, Лог: {', '.join(self.log_messages)}"

@@ -1,17 +1,22 @@
-from modules.category import Category
-from modules.product import Product
-from modules.smartphone import Smartphone
-from modules.grass import Grass
-from modules.utils import load_data_from_json
+from modules.category import Category, Order
+from modules.product import Smartphone, Grass
 
-# Загружаем данные из файла JSON
-json_file_path = 'products.json'
-loaded_categories = load_data_from_json(json_file_path)
+iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "iOS")
+bluegrass = Grass("Bluegrass", "Grass", 5, 100, "Blue")
 
-# Вывод информации о категориях и их продуктах
-for category in loaded_categories:
-    print(f"\nCategory: {category.name}")
-    print(f"Description: {category.description}")
-    print("Products:")
-    for product_info in category.products_info:
-        print(f"\t{product_info}")
+phones_category = Category("Phones", "Smartphones and accessories")
+lawns_category = Category("Lawns", "Grass and gardening")
+
+phones_category.add_product(iphone)
+lawns_category.add_product(bluegrass)
+
+order = Order()
+order.add_product(iphone)
+order.add_product(bluegrass)
+
+print("Категории:")
+print(phones_category)
+print(lawns_category)
+
+print("\nЗаказ:")
+print(order)

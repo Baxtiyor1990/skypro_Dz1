@@ -7,8 +7,3 @@ class Smartphone(AbstractProduct):
         self.model = model
         self.memory = memory
         self.color = color
-
-    def specific_method(self):
-        # Добавьте реализацию конкретного метода для смартфона, если необходимо
-        pass
-

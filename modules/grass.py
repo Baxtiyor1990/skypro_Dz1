@@ -6,7 +6,3 @@ class Grass(AbstractProduct):
         self.country = country
         self.germination_period = germination_period
         self.color = color
-
-    def specific_method(self):
-        # Добавьте реализацию конкретного метода для травы, если необходимо
-        pass

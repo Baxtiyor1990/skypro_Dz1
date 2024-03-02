@@ -1,8 +1,11 @@
-from modules.category import Category, Order
-from modules.product import Smartphone, Grass
+from modules.category import Category
+from modules.smartphone import Smartphone
+from modules.grass import Grass
+from modules.order import Order
+from modules.utils import LogMixin, PrintMixin
 
-iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "iOS")
-bluegrass = Grass("Bluegrass", "Grass", 5, 100, "Blue")
+iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "High", "X", "256GB", "Silver")
+bluegrass = Grass("Bluegrass", "Grass", 5, 100, "Country", "Spring", "Blue")
 
 phones_category = Category("Phones", "Smartphones and accessories")
 lawns_category = Category("Lawns", "Grass and gardening")

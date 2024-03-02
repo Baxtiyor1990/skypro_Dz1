@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from .utils import LogMixin
+from .utils import LogMixin, PrintMixin
 
-class AbstractProduct(ABC, LogMixin):
+class AbstractProduct(ABC, LogMixin, PrintMixin):
     @abstractmethod
     def __init__(self, name, description, price, quantity_in_stock):
         super().__init__()

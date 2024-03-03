@@ -1,8 +1,7 @@
 from .product import AbstractProduct
-
 class Grass(AbstractProduct):
-    def __init__(self, name, description, price, quantity_in_stock, country, germination_period, color):
+    def __init__(self, name, description, price, quantity_in_stock, type, season, color):
         super().__init__(name, description, price, quantity_in_stock)
-        self.country = country
-        self.germination_period = germination_period
+        self.type = type
+        self.season = season
         self.color = color

@@ -4,7 +4,7 @@ from modules.grass import Grass
 from modules.order import Order
 from modules.utils import LogMixin, PrintMixin
 
-iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "High", "X", "256GB", "Silver")
+iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "High", "X", "256GB", "Silver", "iOS")
 bluegrass = Grass("Bluegrass", "Grass", 5, 100, "Country", "Spring", "Blue")
 
 phones_category = Category("Phones", "Smartphones and accessories")

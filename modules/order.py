@@ -1,13 +1,31 @@
-from modules.utils import LogMixin, PrintMixin
+from .product import Product
+from .utils import LoggingMixin
+from abc import ABC, abstractmethod
 
-class Order(LogMixin, PrintMixin):
-    def __init__(self):
-        super().__init__()
-        self.products_info = []
+class OrderItem(ABC):
+    def __init__(self, product, quantity):
+        self.product = product
+        self.quantity = quantity
 
-    def add_product(self, product):
-        self.log(f"Добавление продукта {product.name} в заказ.")
-        self.products_info.append(product)
+    @abstractmethod
+    def calculate_total(self):
+        pass
 
-    def __str__(self):
-        return f"Заказ, Лог: {', '.join(self.log_messages)}"
+class OrderCategory(ABC):
+    @abstractmethod
+    def some_common_method(self):
+        pass
+
+class Order(OrderItem, OrderCategory, LoggingMixin):
+    def __init__(self, product, quantity, total_cost):
+        super().__init__(product, quantity)
+        self.total_cost = total_cost
+
+    def calculate_total(self):
+        return self.product.price * self.quantity
+
+    def some_common_method(self):
+        print(f'This is a common method for {self.product}')
+
+    def __repr__(self):
+        return f"Order({repr(self.product)}, {self.quantity}, {self.total_cost})"

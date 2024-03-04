@@ -1,40 +1,20 @@
 {
-  "categories": [
+  "products": [
     {
-      "name": "TestCategory1",
-      "description": "Test Electronics category description",
-      "products": [
-        {
-          "name": "TestProduct1",
-          "description": "Test Laptop",
-          "price": 500.0,
-          "quantity_in_stock": 5
-        },
-        {
-          "name": "TestProduct2",
-          "description": "Test Smartphone",
-          "price": 300.0,
-          "quantity_in_stock": 15
-        }
-      ]
+      "type": "smartphone",
+      "name": "iPhone",
+      "description": "Smartphone description",
+      "price": 1000,
+      "quantity": 5,
+      "model": "iPhone 12"
     },
     {
-      "name": "TestCategory2",
-      "description": "Test Clothing category description",
-      "products": [
-        {
-          "name": "TestProduct3",
-          "description": "Test T-shirt",
-          "price": 10.0,
-          "quantity_in_stock": 20
-        },
-        {
-          "name": "TestProduct4",
-          "description": "Test Jeans",
-          "price": 25.0,
-          "quantity_in_stock": 10
-        }
-      ]
+      "type": "grass",
+      "name": "Green Grass",
+      "description": "Lawn grass description",
+      "price": 20,
+      "quantity": 100,
+      "grass_type": "Green"
     }
   ]
 }

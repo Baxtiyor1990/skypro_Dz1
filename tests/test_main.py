@@ -1,42 +1,24 @@
 import unittest
-from modules.category import Category, Order
-from modules.product import Smartphone, Grass
+from modules.smartphone import Smartphone
+from modules.grass import LawnGrass
+from modules.order import Order
 
-class TestECommerce(unittest.TestCase):
-    def setUp(self):
-        Category.total_categories = 0
-        Category.total_products = 0
+class TestMain(unittest.TestCase):
+    def test_smartphone_repr(self):
+        smartphone = Smartphone('iPhone', 'Smartphone description', 1000, 5, 'iPhone X')
+        expected_repr = "Smartphone('iPhone', 'Smartphone description', 1000, 5, 'iPhone X')"
+        self.assertEqual(repr(smartphone), expected_repr)
 
-    def test_category_initialization(self):
-        category = Category("Phones", "Smartphones and accessories")
-        self.assertEqual(category.name, "Phones")
-        self.assertEqual(category.description, "Smartphones and accessories")
-        self.assertEqual(len(category.products_info), 0)
-        self.assertEqual(Category.total_categories, 1)
+    def test_lawn_grass_repr(self):
+        lawn_grass = LawnGrass('Grass', 'Lawn grass description', 20, 100, 'Ryegrass')
+        expected_repr = "LawnGrass('Grass', 'Lawn grass description', 20, 100, 'Ryegrass')"
+        self.assertEqual(repr(lawn_grass), expected_repr)
 
-    def test_product_initialization(self):
-        iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "iOS")
-        self.assertEqual(iphone.name, "iPhone")
-        self.assertEqual(iphone.description, "Smartphone")
-        self.assertEqual(iphone.price, 1000)
-        self.assertEqual(iphone.quantity_in_stock, 10)
-
-    def test_add_product_to_category(self):
-        phones_category = Category("Phones", "Smartphones and accessories")
-        iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "iOS")
-        phones_category.add_product(iphone)
-        self.assertEqual(len(phones_category.products_info), 1)
-        self.assertEqual(Category.total_products, 1)
-
-    def test_order_initialization(self):
-        order = Order()
-        self.assertEqual(len(order.products_info), 0)
-
-    def test_add_product_to_order(self):
-        order = Order()
-        iphone = Smartphone("iPhone", "Smartphone", 1000, 10, "iOS")
-        order.add_product(iphone)
-        self.assertEqual(len(order.products_info), 1)
+    def test_order_repr(self):
+        smartphone = Smartphone('iPhone', 'Smartphone description', 1000, 5, 'iPhone X')
+        order = Order(smartphone, 2, 2000)
+        expected_repr = "Order(Smartphone('iPhone', 'Smartphone description', 1000, 5, 'iPhone X'), 2, 2000)"
+        self.assertEqual(repr(order), expected_repr)
 
 if __name__ == '__main__':
     unittest.main()

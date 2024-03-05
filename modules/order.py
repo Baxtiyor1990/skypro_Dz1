@@ -1,3 +1,4 @@
+
 from .product import Product
 from .utils import LoggingMixin
 from abc import ABC, abstractmethod

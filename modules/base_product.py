@@ -1,6 +1,7 @@
+
 from abc import ABC, abstractmethod
 
-class Category(ABC):
+class BaseProduct(ABC):
     @abstractmethod
-    def some_abstract_method(self):
+    def new_product(cls, *args, **kwargs):
         pass

@@ -1,3 +1,4 @@
+
 class LoggingMixin:
     def __repr__(self):
         attrs = ', '.join([f"{attr}={getattr(self, attr)}" for attr in self.__dict__])

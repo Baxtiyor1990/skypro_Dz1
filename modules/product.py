@@ -1,15 +1,30 @@
-from abc import ABC, abstractmethod
 
-class Product(ABC):
-    def __init__(self, name, description, price, quantity):
+from .base_product import BaseProduct
+from .utils import LoggingMixin
+
+class Product(BaseProduct, LoggingMixin):
+    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
+        super().__init__()
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
-    @abstractmethod
-    def some_abstract_method(self):
-        pass
+    def __str__(self):
+        return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n'
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity})"
+    @classmethod
+    def new_product(cls, product_data: dict):
+        return cls(**product_data)
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, new_price):
+        if new_price < 0:
+            raise ValueError("Price cannot be negative")
+        self.__price = new_price
+
+

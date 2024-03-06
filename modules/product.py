@@ -1,14 +1,25 @@
 
-from .base_product import BaseProduct
-from .utils import LoggingMixin
+from abc import ABC, abstractmethod
+from .exceptions import ZeroQuantityException
 
-class Product(BaseProduct, LoggingMixin):
+class BaseProduct(ABC):
+    @abstractmethod
+    def new_product(self, *args):
+        pass
+
+
+class Product(BaseProduct):
     def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
-        super().__init__()
+        if quantity == 0:
+            raise ZeroQuantityException()
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+
+    @property
+    def price(self):
+        return self.__price
 
     def __str__(self):
         return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n'
@@ -16,15 +27,3 @@ class Product(BaseProduct, LoggingMixin):
     @classmethod
     def new_product(cls, product_data: dict):
         return cls(**product_data)
-
-    @property
-    def price(self):
-        return self.__price
-
-    @price.setter
-    def price(self, new_price):
-        if new_price < 0:
-            raise ValueError("Price cannot be negative")
-        self.__price = new_price
-
-
